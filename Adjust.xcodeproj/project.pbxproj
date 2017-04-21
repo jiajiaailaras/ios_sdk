@@ -268,6 +268,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6F44EDA91EA6497D0081B510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F44ED9D1EA6497D0081B510 /* AdjustTestLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6F44ED911EA6497D0081B510;
+			remoteInfo = AdjustTestLibrary;
+		};
 		9679922318BBAE2800394606 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9679920518BBAE2800394606 /* Project object */;
@@ -356,6 +363,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6F44ED9D1EA6497D0081B510 /* AdjustTestLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AdjustTestLibrary.xcodeproj; path = AdjustTestLibrary/AdjustTestLibrary.xcodeproj; sourceTree = "<group>"; };
 		9601C19C1A31DD7F00A9AE21 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		9601C1A11A31DE0300A9AE21 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9601CAE21C74B70600670879 /* ADJEventSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADJEventSuccess.h; sourceTree = "<group>"; };
@@ -686,6 +694,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F44ED5F1EA6432E0081B510 /* AdjustCI */ = {
+			isa = PBXGroup;
+			children = (
+				6F44ED9D1EA6497D0081B510 /* AdjustTestLibrary.xcodeproj */,
+			);
+			path = AdjustCI;
+			sourceTree = "<group>";
+		};
+		6F44ED9E1EA6497D0081B510 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F44EDAA1EA6497D0081B510 /* libAdjustTestLibrary.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9648C5E41CD1765E00A3B049 /* AdjustBridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +743,7 @@
 		9679920418BBAE2800394606 = {
 			isa = PBXGroup;
 			children = (
+				6F44ED5F1EA6432E0081B510 /* AdjustCI */,
 				96E5E34B18BBB48A008E7B30 /* Adjust */,
 				9DFA37AE1C0F219400782607 /* AdjustSdk */,
 				9648C5E41CD1765E00A3B049 /* AdjustBridge */,
@@ -1393,6 +1418,10 @@
 					ProductGroup = 9D449DCC1E6ED24400E7E80B /* Products */;
 					ProjectRef = 9D449DCB1E6ED24400E7E80B /* AdjustExample-WebView.xcodeproj */;
 				},
+				{
+					ProductGroup = 6F44ED9E1EA6497D0081B510 /* Products */;
+					ProjectRef = 6F44ED9D1EA6497D0081B510 /* AdjustTestLibrary.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1407,6 +1436,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		6F44EDAA1EA6497D0081B510 /* libAdjustTestLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAdjustTestLibrary.a;
+			remoteRef = 6F44EDA91EA6497D0081B510 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9D449DB21E6ED22900E7E80B /* AdjustExample-iOS.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;

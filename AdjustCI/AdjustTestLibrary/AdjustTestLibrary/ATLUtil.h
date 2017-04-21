@@ -1,0 +1,22 @@
+//
+//  ATLUtil.h
+//  AdjustTestLibrary
+//
+//  Created by Pedro on 18.04.17.
+//  Copyright © 2017 adjust. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+typedef void (^selfInjectedBlock)(id);
+
+@interface ATLUtil : NSObject
+
++ (void)debug:(NSString *)format, ...;
++ (void)launchInQueue:(dispatch_queue_t)queue
+           selfInject:(id)selfInject
+                block:(selfInjectedBlock)block;
++ (BOOL)isNull:(id)value;
++ (NSString *)adjTrim:(NSString *)value;
+
+@end
