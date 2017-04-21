@@ -46,7 +46,7 @@ static const char * const kInternalQueueName = "io.adjust.RequestQueue";
     self.internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
     self.packageHandler = packageHandler;
     self.logger = ADJAdjustFactory.logger;
-    self.baseUrl = [NSURL URLWithString:ADJUtil.baseUrl];
+    self.baseUrl = [NSURL URLWithString:[ADJAdjustFactory baseUrl]];
     
     return self;
 }

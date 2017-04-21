@@ -94,7 +94,7 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
 {
     selfI.backoffStrategy = [ADJAdjustFactory sdkClickHandlerBackoffStrategy];
     selfI.packageQueue = [NSMutableArray array];
-    selfI.baseUrl = [NSURL URLWithString:ADJUtil.baseUrl];
+    selfI.baseUrl = [NSURL URLWithString:[ADJAdjustFactory baseUrl]];
 }
 
 - (void)sendSdkClickI:(ADJSdkClickHandler *)selfI
