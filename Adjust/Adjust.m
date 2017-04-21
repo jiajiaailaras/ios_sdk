@@ -32,6 +32,9 @@ NSString * const ADJEnvironmentProduction   = @"production";
 #pragma mark -
 @implementation Adjust
 
+static Adjust *defaultInstance = nil;
+static dispatch_once_t onceToken = 0;
+
 + (void)appDidLaunch:(ADJConfig *)adjustConfig {
     [[Adjust getInstance] appDidLaunch:adjustConfig];
 }
@@ -121,8 +124,6 @@ NSString * const ADJEnvironmentProduction   = @"production";
 }
 
 + (id)getInstance {
-    static Adjust *defaultInstance = nil;
-    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         defaultInstance = [[self alloc] init];
     });
@@ -130,7 +131,11 @@ NSString * const ADJEnvironmentProduction   = @"production";
     return defaultInstance;
 }
 
-- (id) init {
++ (void)deleteInstance {
+    [[Adjust getInstance] deleteInstance];
+}
+
+- (id)init {
     self = [super init];
     if (self == nil) return nil;
 
@@ -309,12 +314,17 @@ NSString * const ADJEnvironmentProduction   = @"production";
 }
 
 - (void)teardown:(BOOL)deleteState {
-    if (self.activityHandler == nil) {
-        [self.logger error:@"Adjust already down or not initialized"];
-        return;
-   }
-    [self.activityHandler teardown:deleteState];
+    if (self.activityHandler != nil) {
+        [self.activityHandler teardown:deleteState];
+    }
     self.activityHandler = nil;
+    self.sessionParametersActionsArray = nil;
+    self.deviceTokenData = nil;
+}
+
+- (void)deleteInstance {
+    defaultInstance = nil;
+    onceToken = 0;
 }
 
 #pragma mark - private

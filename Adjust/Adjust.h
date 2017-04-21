@@ -204,8 +204,6 @@ extern NSString * __nonnull const ADJEnvironmentProduction;
 
 - (void)setEnabled:(BOOL)enabled;
 
-- (void)teardown:(BOOL)deleteState;
-
 - (void)appWillOpenUrl:(nonnull NSURL *)url;
 
 - (void)setOfflineMode:(BOOL)enabled;
@@ -239,5 +237,9 @@ extern NSString * __nonnull const ADJEnvironmentProduction;
 - (nullable ADJAttribution *)attribution;
 
 - (nullable NSURL *)convertUniversalLink:(nonnull NSURL *)url scheme:(nonnull NSString *)scheme;
+
+- (void)teardown:(BOOL)deleteState;
+
+- (void)deleteInstance;
 
 @end
