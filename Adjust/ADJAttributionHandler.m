@@ -234,7 +234,7 @@ attributionResponseData:(ADJAttributionResponseData *)attributionResponseData {
 - (NSURL *)urlI:(ADJAttributionHandler*)selfI {
     NSString *parameters = [ADJUtil queryString:selfI.attributionPackage.parameters];
     NSString *relativePath = [NSString stringWithFormat:@"%@?%@", selfI.attributionPackage.path, parameters];
-    NSURL *baseUrl = [NSURL URLWithString:ADJUtil.baseUrl];
+    NSURL *baseUrl = [NSURL URLWithString:[ADJAdjustFactory baseUrl]];
     NSURL *url = [NSURL URLWithString:relativePath relativeToURL:baseUrl];
     
     return url;

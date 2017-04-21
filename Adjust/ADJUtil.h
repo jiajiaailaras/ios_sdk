@@ -65,8 +65,6 @@ responseDataHandler:(void (^)(ADJResponseData *responseData))responseDataHandler
 
 + (NSString *)idfa;
 
-+ (NSString *)baseUrl;
-
 + (NSString *)clientSdk;
 
 + (NSString *)getUpdateTime;

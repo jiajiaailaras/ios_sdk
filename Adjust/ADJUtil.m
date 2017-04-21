@@ -50,7 +50,6 @@ static NSString * const kUniversalLinkPattern       = @"https://[^.]*\\.ulink\\.
 static NSString * const kOptionalRedirectPattern    = @"adjust_redirect=[^&#]*";
 static NSString * const kShortUniversalLinkPattern  = @"http[s]?://[a-z0-9]{4}\\.adj\\.st/?(.*)";
 
-static NSString * const kBaseUrl                    = @"https://app.adjust.com";
 static NSString * const kDateFormat                 = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'Z";
 
 @implementation ADJUtil
@@ -191,10 +190,6 @@ static NSString * const kDateFormat                 = @"yyyy-MM-dd'T'HH:mm:ss.SS
 
 + (void)updateUrlSessionConfiguration:(ADJConfig *)config {
     userAgent = config.userAgent;
-}
-
-+ (NSString *)baseUrl {
-    return kBaseUrl;
 }
 
 + (NSString *)clientSdk {

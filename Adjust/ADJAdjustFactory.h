@@ -37,8 +37,10 @@
 + (id<ADJAttributionHandler>)attributionHandlerForActivityHandler:(id<ADJActivityHandler>)activityHandler
                                            withAttributionPackage:(ADJActivityPackage *) attributionPackage
                                                     startsSending:(BOOL)startsSending;
-+ (BOOL)testing;
 + (NSTimeInterval)maxDelayStart;
+
++ (BOOL)testing;
++ (NSString *)baseUrl;
 
 + (void)setPackageHandler:(id<ADJPackageHandler>)packageHandler;
 + (void)setRequestHandler:(id<ADJRequestHandler>)requestHandler;
@@ -52,8 +54,10 @@
 + (void)setAttributionHandler:(id<ADJAttributionHandler>)attributionHandler;
 + (void)setPackageHandlerBackoffStrategy:(ADJBackoffStrategy *)backoffStrategy;
 + (void)setSdkClickHandlerBackoffStrategy:(ADJBackoffStrategy *)backoffStrategy;
-+ (void)setTesting:(BOOL)testing;
 + (void)setMaxDelayStart:(NSTimeInterval)maxDelayStart;
+
++ (void)setTesting:(BOOL)testing;
++ (void)setBaseUrl:(NSString *)baseUrl;
 
 + (void)teardown:(BOOL)deleteState;
 @end

@@ -104,7 +104,7 @@ startsSending:(BOOL)startsSending
     selfI.paused = !startsSending;
     selfI.backoffStrategy = [ADJAdjustFactory sdkClickHandlerBackoffStrategy];
     selfI.packageQueue = [NSMutableArray array];
-    selfI.baseUrl = [NSURL URLWithString:ADJUtil.baseUrl];
+    selfI.baseUrl = [NSURL URLWithString:[ADJAdjustFactory baseUrl]];
 }
 
 - (void)sendSdkClickI:(ADJSdkClickHandler *)selfI

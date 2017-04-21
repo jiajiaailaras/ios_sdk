@@ -24,7 +24,8 @@ static ADJBackoffStrategy * packageHandlerBackoffStrategy;
 static ADJBackoffStrategy * sdkClickHandlerBackoffStrategy;
 static NSTimeInterval internalMaxDelayStart;
 
-static BOOL internalTesting;
+static BOOL internalTesting = NO;
+static NSString * internalBaseUrl = @"https://app.adjust.com";
 
 @implementation ADJAdjustFactory
 
@@ -34,7 +35,6 @@ static BOOL internalTesting;
     }
 
     [ADJAdjustFactory resetValues];
-    internalTesting = NO;
 }
 
 + (void)resetValues {
@@ -157,15 +157,19 @@ static BOOL internalTesting;
     return [internalSdkClickHandler initWithActivityHandler:activityHandler startsSending:startsSending];
 }
 
-+ (BOOL)testing {
-    return internalTesting;
-}
-
 + (NSTimeInterval)maxDelayStart {
     if (internalMaxDelayStart == -1) {
         return 10.0;               // 10 seconds
     }
     return internalMaxDelayStart;
+}
+
++ (BOOL)testing {
+    return internalTesting;
+}
+
++ (NSString *)baseUrl {
+    return internalBaseUrl;
 }
 
 + (void)setPackageHandler:(id<ADJPackageHandler>)packageHandler {
@@ -216,12 +220,16 @@ static BOOL internalTesting;
     sdkClickHandlerBackoffStrategy = backoffStrategy;
 }
 
++ (void)setMaxDelayStart:(NSTimeInterval)maxDelayStart {
+    internalMaxDelayStart = maxDelayStart;
+}
+
 + (void)setTesting:(BOOL)testing {
     internalTesting = testing;
 }
 
-+ (void)setMaxDelayStart:(NSTimeInterval)maxDelayStart {
-    internalMaxDelayStart = maxDelayStart;
++ (void)setBaseUrl:(NSString *)baseUrl {
+    internalBaseUrl = baseUrl;
 }
 
 + (void)teardown:(BOOL)deleteState {
