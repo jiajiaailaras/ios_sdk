@@ -236,6 +236,11 @@ startsSending:(BOOL)startsSending
     [selfI writePackageQueueS:selfI];
 }
 
+#pragma mark - static
++ (void)deleteState {
+    [ADJUtil deleteFile:kPackageQueueFilename];
+}
+
 #pragma mark - private
 - (void)readPackageQueueI:(ADJPackageHandler *)selfI {
     id object = [ADJUtil readObject:kPackageQueueFilename objectName:@"Package queue" class:[NSArray class]];

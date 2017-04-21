@@ -7,24 +7,52 @@
 //
 
 #import "ADJAdjustFactory.h"
+#import "Adjust.h"
 
-static id<ADJPackageHandler> internalPackageHandler = nil;
-static id<ADJRequestHandler> internalRequestHandler = nil;
-static id<ADJActivityHandler> internalActivityHandler = nil;
-static id<ADJLogger> internalLogger = nil;
-static id<ADJAttributionHandler> internalAttributionHandler = nil;
-static id<ADJSdkClickHandler> internalSdkClickHandler = nil;
+static id<ADJPackageHandler> internalPackageHandler;
+static id<ADJRequestHandler> internalRequestHandler;
+static id<ADJActivityHandler> internalActivityHandler;
+static id<ADJLogger> internalLogger;
+static id<ADJAttributionHandler> internalAttributionHandler;
+static id<ADJSdkClickHandler> internalSdkClickHandler;
 
-static double internalSessionInterval    = -1;
-static double intervalSubsessionInterval = -1;
-static NSTimeInterval internalTimerInterval = -1;
-static NSTimeInterval intervalTimerStart = -1;
-static ADJBackoffStrategy * packageHandlerBackoffStrategy = nil;
-static ADJBackoffStrategy * sdkClickHandlerBackoffStrategy = nil;
-static BOOL internalTesting = NO;
-static NSTimeInterval internalMaxDelayStart = -1;
+static double internalSessionInterval;
+static double intervalSubsessionInterval;
+static NSTimeInterval internalTimerInterval;
+static NSTimeInterval intervalTimerStart;
+static ADJBackoffStrategy * packageHandlerBackoffStrategy;
+static ADJBackoffStrategy * sdkClickHandlerBackoffStrategy;
+static NSTimeInterval internalMaxDelayStart;
+
+static BOOL internalTesting;
 
 @implementation ADJAdjustFactory
+
++ (void)initialize {
+    if (self != [ADJAdjustFactory class]) {
+        return;
+    }
+
+    [ADJAdjustFactory resetValues];
+    internalTesting = NO;
+}
+
++ (void)resetValues {
+    internalPackageHandler = nil;
+    internalRequestHandler = nil;
+    internalActivityHandler = nil;
+    internalLogger = nil;
+    internalAttributionHandler = nil;
+    internalSdkClickHandler = nil;
+
+    internalSessionInterval    = -1;
+    intervalSubsessionInterval = -1;
+    internalTimerInterval = -1;
+    intervalTimerStart = -1;
+    packageHandlerBackoffStrategy = nil;
+    sdkClickHandlerBackoffStrategy = nil;
+    internalMaxDelayStart = -1;
+}
 
 + (id<ADJPackageHandler>)packageHandlerForActivityHandler:(id<ADJActivityHandler>)activityHandler
                                             startsSending:(BOOL)startsSending {
@@ -196,20 +224,14 @@ static NSTimeInterval internalMaxDelayStart = -1;
     internalMaxDelayStart = maxDelayStart;
 }
 
-+ (void)teardown {
-    internalPackageHandler = nil;
-    internalRequestHandler = nil;
-    internalActivityHandler = nil;
-    internalLogger = nil;
-    internalAttributionHandler = nil;
-    internalSdkClickHandler = nil;
++ (void)teardown:(BOOL)deleteState {
+    [Adjust teardown:deleteState];
 
-    internalSessionInterval    = -1;
-    intervalSubsessionInterval = -1;
-    internalTimerInterval = -1;
-    intervalTimerStart = -1;
-    packageHandlerBackoffStrategy = nil;
-    sdkClickHandlerBackoffStrategy = nil;
-    internalMaxDelayStart = -1;
+    if (deleteState) {
+        [ADJActivityHandler deleteState];
+        [ADJPackageHandler deleteState];
+    }
+
+    [ADJAdjustFactory resetValues];
 }
 @end

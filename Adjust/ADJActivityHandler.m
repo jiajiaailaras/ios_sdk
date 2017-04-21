@@ -1273,6 +1273,14 @@ remainsPausedMessage:(NSString *)remainsPausedMessage
     [selfI.sdkClickHandler sendSdkClick:clickPackage];
 }
 
+#pragma mark - static
+
++ (void)deleteState {
+    [ADJUtil deleteFile:kActivityStateFilename];
+    [ADJUtil deleteFile:kAttributionFilename];
+    [ADJUtil deleteFile:kSessionCallbackParametersFilename];
+    [ADJUtil deleteFile:kSessionPartnerParametersFilename];
+}
 
 #pragma mark - private
 

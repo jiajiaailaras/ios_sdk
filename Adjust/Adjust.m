@@ -34,10 +34,10 @@ NSString * const ADJEnvironmentProduction   = @"production";
 
 #pragma mark - Object lifecycle methods
 
-+ (id)getInstance {
-    static Adjust *defaultInstance = nil;
-    static dispatch_once_t onceToken;
+static Adjust *defaultInstance = nil;
+static dispatch_once_t onceToken = 0;
 
++ (id)getInstance {
     dispatch_once(&onceToken, ^{
         defaultInstance = [[self alloc] init];
     });
@@ -146,6 +146,14 @@ NSString * const ADJEnvironmentProduction   = @"production";
 
 + (NSString *)adid {
     return [[Adjust getInstance] adid];
+}
+
++ (void)teardown:(BOOL)deleteState {
+    if (defaultInstance != nil) {
+        [defaultInstance teardown:deleteState];
+    }
+    defaultInstance = nil;
+    onceToken = 0;
 }
 
 #pragma mark - Public instance methods
@@ -351,13 +359,12 @@ NSString * const ADJEnvironmentProduction   = @"production";
 }
 
 - (void)teardown:(BOOL)deleteState {
-    if (self.activityHandler == nil) {
-        [self.logger error:@"Adjust already down or not initialized"];
-        return;
+    if (self.activityHandler != nil) {
+        [self.activityHandler teardown:deleteState];
     }
-
-    [self.activityHandler teardown:deleteState];
+    self.logger = nil;
     self.activityHandler = nil;
+    self.savedPreLaunch = nil;
 }
 
 #pragma mark - Private & helper methods

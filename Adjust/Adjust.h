@@ -197,14 +197,13 @@ extern NSString * __nonnull const ADJEnvironmentProduction;
  */
 + (nullable id)getInstance;
 
++ (void)teardown:(BOOL)deleteState;
 
 - (void)appDidLaunch:(nullable ADJConfig *)adjustConfig;
 
 - (void)trackEvent:(nullable ADJEvent *)event;
 
 - (void)setEnabled:(BOOL)enabled;
-
-- (void)teardown:(BOOL)deleteState;
 
 - (void)appWillOpenUrl:(nonnull NSURL *)url;
 

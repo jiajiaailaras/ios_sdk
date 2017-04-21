@@ -33,5 +33,5 @@
 
 + (id<ADJPackageHandler>)handlerWithActivityHandler:(id<ADJActivityHandler>)activityHandler
                                       startsSending:(BOOL)startsSending;
-
++ (void)deleteState;
 @end
