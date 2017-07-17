@@ -59,8 +59,4 @@
                               transactionId:(nullable NSString *)transactionId
                                 newCustomer:(nullable NSString *)newCustomer;
 
-+ (void)injectUserSegmentIntoCriteoEvents:(NSString *)userSegment;
-
-+ (void)injectCustomerIdIntoCriteoEvents:(NSString *)customerId;
-
 @end
