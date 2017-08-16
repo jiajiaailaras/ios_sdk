@@ -222,5 +222,6 @@
  * @return Boolean indicating whether adjust config object is valid or not.
  */
 - (BOOL)isValid;
+@property (nonatomic, copy, nullable) NSString *basePath;
 
 @end

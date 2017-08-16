@@ -102,6 +102,7 @@ static const uint64_t kDelayRetryIad   =  2 * NSEC_PER_SEC; // 1 second
 // copy for objects shared with the user
 @property (nonatomic, copy) ADJConfig *adjustConfig;
 @property (nonatomic, copy) NSData* deviceTokenData;
+@property (nonatomic, copy) NSString *basePath;
 
 @end
 
@@ -534,6 +535,10 @@ typedef NS_ENUM(NSInteger, AdjADClientError) {
                      }];
 }
 
+- (NSString *)getBasePath {
+    return _basePath;
+}
+
 - (void)teardown:(BOOL)deleteState
 {
     [ADJAdjustFactory.logger verbose:@"ADJActivityHandler teardown"];
@@ -637,6 +642,8 @@ preLaunchActionsArray:(NSArray*)preLaunchActionsArray
     }
 
     [ADJUtil updateUrlSessionConfiguration:selfI.adjustConfig];
+
+    selfI.basePath = selfI.adjustConfig.basePath;
 
     selfI.packageHandler = [ADJAdjustFactory packageHandlerForActivityHandler:selfI
                                                                 startsSending:[selfI toSendI:selfI
