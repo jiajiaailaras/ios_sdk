@@ -26,6 +26,7 @@
 - (void)pauseSending;
 - (void)resumeSending;
 - (void)updatePackages:(ADJSessionParameters *)sessionParameters;
+- (NSString *)getBasePath;
 - (void)teardown:(BOOL)deleteState;
 @end
 

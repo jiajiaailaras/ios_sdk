@@ -24,6 +24,7 @@ static NSString   * const kAttributionTimerName   = @"Attribution timer";
 @property (nonatomic, strong) ADJTimerOnce *attributionTimer;
 @property (nonatomic, strong) ADJActivityPackage * attributionPackage;
 @property (nonatomic, assign) BOOL paused;
+@property (nonatomic, copy) NSString *basePath;
 
 @end
 
@@ -52,6 +53,7 @@ static const double kRequestTimeout = 60; // 60 seconds
     self.logger = ADJAdjustFactory.logger;
     self.attributionPackage = attributionPackage;
     self.paused = !startsSending;
+    self.basePath = [activityHandler getBasePath];
     __weak __typeof__(self) weakSelf = self;
     self.attributionTimer = [ADJTimerOnce timerWithBlock:^{
         __typeof__(self) strongSelf = weakSelf;
@@ -211,7 +213,13 @@ attributionResponseData:(ADJAttributionResponseData *)attributionResponseData {
 - (NSURL *)urlI:(ADJAttributionHandler*)selfI {
     NSString *parameters = [ADJUtil queryString:selfI.attributionPackage.parameters];
     NSString *relativePath = [NSString stringWithFormat:@"%@?%@", selfI.attributionPackage.path, parameters];
-    NSURL *baseUrl = [NSURL URLWithString:[ADJAdjustFactory baseUrl]];
+    NSURL *baseUrl;
+    if (selfI.basePath != nil) {
+        NSString * sUrl = [ADJAdjustFactory baseUrl];
+        baseUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", sUrl, selfI.basePath]];
+    } else {
+        baseUrl = [NSURL URLWithString:[ADJAdjustFactory baseUrl]];
+    }
     NSURL *url = [NSURL URLWithString:relativePath relativeToURL:baseUrl];
     
     return url;

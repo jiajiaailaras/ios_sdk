@@ -18,22 +18,27 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
 @interface ADJSdkClickHandler()
 
 @property (nonatomic, strong) dispatch_queue_t internalQueue;
+@property (nonatomic, weak) id<ADJActivityHandler> activityHandler;
 @property (nonatomic, weak) id<ADJLogger> logger;
 @property (nonatomic, strong) ADJBackoffStrategy * backoffStrategy;
 @property (nonatomic, assign) BOOL paused;
 @property (nonatomic, strong) NSMutableArray *packageQueue;
 @property (nonatomic, strong) NSURL *baseUrl;
+@property (nonatomic, copy) NSString *basePath;
 
 @end
 
 @implementation ADJSdkClickHandler
 
-+ (id<ADJSdkClickHandler>)handlerWithStartsSending:(BOOL)startsSending
++ (id<ADJSdkClickHandler>)handlerWithActivityHandler:(id<ADJActivityHandler>)activityHandler
+                                       startsSending:(BOOL)startsSending
 {
-    return [[ADJSdkClickHandler alloc] initWithStartsSending:startsSending];
+    return [[ADJSdkClickHandler alloc] initWithActivityHandler:activityHandler
+                                                 startsSending:startsSending];
 }
 
-- (id)initWithStartsSending:(BOOL)startsSending
+- (id)initWithActivityHandler:(id<ADJActivityHandler>)activityHandler
+                startsSending:(BOOL)startsSending
 {
     self = [super init];
     if (self == nil) return nil;
@@ -42,6 +47,8 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
 
     self.logger = ADJAdjustFactory.logger;
     self.paused = !startsSending;
+    self.activityHandler = activityHandler;
+    self.basePath = [activityHandler getBasePath];
 
     [ADJUtil launchInQueue:self.internalQueue
                 selfInject:self

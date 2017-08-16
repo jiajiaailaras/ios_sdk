@@ -87,6 +87,7 @@ static const uint64_t kDelayRetryIad   =  2 * NSEC_PER_SEC; // 1 second
 // copy for objects shared with the user
 @property (nonatomic, copy) ADJConfig *adjustConfig;
 @property (nonatomic, copy) NSData* deviceTokenData;
+@property (nonatomic, copy) NSString *basePath;
 
 @end
 
@@ -593,6 +594,10 @@ remainsPausedMessage:(NSString *)remainsPausedMessage
                      }];
 }
 
+- (NSString *)getBasePath {
+    return _basePath;
+}
+
 - (void)teardown:(BOOL)deleteState
 {
     [ADJAdjustFactory.logger verbose:@"ADJActivityHandler teardown"];
@@ -695,6 +700,8 @@ sessionParametersActionsArray:(NSArray*)sessionParametersActionsArray
 
     [ADJUtil updateUrlSessionConfiguration:selfI.adjustConfig];
 
+    selfI.basePath = selfI.adjustConfig.basePath;
+
     selfI.packageHandler = [ADJAdjustFactory packageHandlerForActivityHandler:selfI
                                                                 startsSending:[selfI toSendI:selfI
                                                                          sdkClickHandlerOnly:NO]];
@@ -716,8 +723,8 @@ sessionParametersActionsArray:(NSArray*)sessionParametersActionsArray
                                                                         startsSending:[selfI toSendI:selfI
                                                                                  sdkClickHandlerOnly:NO]];
 
-    selfI.sdkClickHandler = [ADJAdjustFactory sdkClickHandlerWithStartsPaused:[selfI toSendI:selfI
-                                                                        sdkClickHandlerOnly:YES]];
+    selfI.sdkClickHandler = [ADJAdjustFactory sdkClickHandlerForActivityHandler:selfI
+                                                                  startsSending:[selfI toSendI:selfI sdkClickHandlerOnly:YES]];
 
     [[UIDevice currentDevice] adjSetIad:selfI triesV3Left:kTryIadV3];
 

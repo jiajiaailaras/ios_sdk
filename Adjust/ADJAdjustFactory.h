@@ -24,7 +24,8 @@
 + (id<ADJActivityHandler>)activityHandlerWithConfig:(ADJConfig *)adjustConfig
                      sessionParametersActionsArray:(NSArray*)sessionParametersActionsArray
                                         deviceToken:(NSData*)deviceToken;
-+ (id<ADJSdkClickHandler>)sdkClickHandlerWithStartsPaused:(BOOL)startsSending;
++ (id<ADJSdkClickHandler>)sdkClickHandlerForActivityHandler:(id<ADJActivityHandler>)activityHandler
+                                              startsSending:(BOOL)startsSending;
 
 + (id<ADJLogger>)logger;
 + (double)sessionInterval;

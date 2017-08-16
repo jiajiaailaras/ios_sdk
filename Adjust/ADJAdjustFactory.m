@@ -150,13 +150,16 @@ static NSString * internalBaseUrl = @"https://app.adjust.com";
                                                  startsSending:startsSending];
 }
 
-+ (id<ADJSdkClickHandler>)sdkClickHandlerWithStartsPaused:(BOOL)startsSending
++ (id<ADJSdkClickHandler>)sdkClickHandlerForActivityHandler:(id<ADJActivityHandler>)activityHandler
+                                              startsSending:(BOOL)startsSending
 {
     if (internalSdkClickHandler == nil) {
-        return [ADJSdkClickHandler handlerWithStartsSending:startsSending];
+        return [ADJSdkClickHandler handlerWithActivityHandler:activityHandler
+                                                startsSending:startsSending];
     }
 
-    return [internalSdkClickHandler initWithStartsSending:startsSending];
+    return [internalSdkClickHandler initWithActivityHandler:activityHandler
+                                              startsSending:startsSending];
 }
 
 + (NSTimeInterval)maxDelayStart {
