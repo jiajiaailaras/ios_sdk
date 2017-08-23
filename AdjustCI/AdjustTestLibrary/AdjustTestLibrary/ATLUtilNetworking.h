@@ -11,7 +11,7 @@
 @interface ATLHttpResponse : NSObject
 
 @property (nonatomic, copy) NSString *responseString;
-@property (nonatomic, strong) NSDictionary *jsonResponse;
+@property (nonatomic, strong) id jsonFoundation;
 @property (nonatomic, strong) NSDictionary<NSString*, NSArray*> *headerFields;
 @property (nonatomic, assign) NSInteger statusCode;
 
@@ -24,7 +24,6 @@
 @property (nonatomic, strong) NSDictionary *headerFields;
 
 @end
-
 
 typedef void (^httpResponseHandler)(ATLHttpResponse* httpResponse);
 

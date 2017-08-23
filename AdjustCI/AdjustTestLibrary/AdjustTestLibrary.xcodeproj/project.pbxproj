@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F068B821F4D789A00B60A4C /* ATLControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068B811F4D789A00B60A4C /* ATLControlChannel.m */; };
+		6F068B851F4D7CF600B60A4C /* ATLUtilNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068B841F4D7CF600B60A4C /* ATLUtilNetworking.m */; };
+		6F3D41E71F4B129000EDD7FA /* MKBlockingQueue.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F3D41E61F4B129000EDD7FA /* MKBlockingQueue.m */; };
 		6F44ED961EA6497D0081B510 /* ATLTestLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F44ED951EA6497D0081B510 /* ATLTestLibrary.m */; };
 		6F44ED971EA6497D0081B510 /* ATLTestLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F44ED941EA6497D0081B510 /* ATLTestLibrary.h */; };
 		6F44EDAD1EA64C3B0081B510 /* ATLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F44EDAC1EA64C3B0081B510 /* ATLUtil.m */; };
-		6F44EDB01EA64DF20081B510 /* ATLUtilNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F44EDAF1EA64DF20081B510 /* ATLUtilNetworking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,6 +22,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				6F3D41E71F4B129000EDD7FA /* MKBlockingQueue.m in CopyFiles */,
 				6F44ED971EA6497D0081B510 /* ATLTestLibrary.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -27,13 +30,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6F068B801F4D789A00B60A4C /* ATLControlChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLControlChannel.h; sourceTree = "<group>"; };
+		6F068B811F4D789A00B60A4C /* ATLControlChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLControlChannel.m; sourceTree = "<group>"; };
+		6F068B831F4D7CF600B60A4C /* ATLUtilNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLUtilNetworking.h; sourceTree = "<group>"; };
+		6F068B841F4D7CF600B60A4C /* ATLUtilNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLUtilNetworking.m; sourceTree = "<group>"; };
+		6F3D41E51F4B128F00EDD7FA /* MKBlockingQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKBlockingQueue.h; sourceTree = "<group>"; };
+		6F3D41E61F4B129000EDD7FA /* MKBlockingQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKBlockingQueue.m; sourceTree = "<group>"; };
 		6F44ED911EA6497D0081B510 /* libAdjustTestLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAdjustTestLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F44ED941EA6497D0081B510 /* ATLTestLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLTestLibrary.h; sourceTree = "<group>"; };
 		6F44ED951EA6497D0081B510 /* ATLTestLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLTestLibrary.m; sourceTree = "<group>"; };
 		6F44EDAB1EA64C3B0081B510 /* ATLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLUtil.h; sourceTree = "<group>"; };
 		6F44EDAC1EA64C3B0081B510 /* ATLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLUtil.m; sourceTree = "<group>"; };
-		6F44EDAE1EA64DF20081B510 /* ATLUtilNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLUtilNetworking.h; sourceTree = "<group>"; };
-		6F44EDAF1EA64DF20081B510 /* ATLUtilNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLUtilNetworking.m; sourceTree = "<group>"; };
 		6F765FD41EA91145003463E6 /* ATLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,9 +78,13 @@
 				6F44ED951EA6497D0081B510 /* ATLTestLibrary.m */,
 				6F44EDAB1EA64C3B0081B510 /* ATLUtil.h */,
 				6F44EDAC1EA64C3B0081B510 /* ATLUtil.m */,
-				6F44EDAE1EA64DF20081B510 /* ATLUtilNetworking.h */,
-				6F44EDAF1EA64DF20081B510 /* ATLUtilNetworking.m */,
 				6F765FD41EA91145003463E6 /* ATLConstants.h */,
+				6F3D41E51F4B128F00EDD7FA /* MKBlockingQueue.h */,
+				6F3D41E61F4B129000EDD7FA /* MKBlockingQueue.m */,
+				6F068B801F4D789A00B60A4C /* ATLControlChannel.h */,
+				6F068B811F4D789A00B60A4C /* ATLControlChannel.m */,
+				6F068B831F4D7CF600B60A4C /* ATLUtilNetworking.h */,
+				6F068B841F4D7CF600B60A4C /* ATLUtilNetworking.m */,
 			);
 			path = AdjustTestLibrary;
 			sourceTree = "<group>";
@@ -137,8 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F44ED961EA6497D0081B510 /* ATLTestLibrary.m in Sources */,
+				6F068B851F4D7CF600B60A4C /* ATLUtilNetworking.m in Sources */,
+				6F068B821F4D789A00B60A4C /* ATLControlChannel.m in Sources */,
 				6F44EDAD1EA64C3B0081B510 /* ATLUtil.m in Sources */,
-				6F44EDB01EA64DF20081B510 /* ATLUtilNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

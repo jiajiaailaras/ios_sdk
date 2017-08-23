@@ -140,17 +140,20 @@ static NSURLSessionConfiguration *urlSessionConfiguration = nil;
     [ATLUtil debug:@"Response: %@", httpResponseData.responseString];
 
     httpResponseData.statusCode = urlResponse.statusCode;
-    
-    [ATLUtilNetworking saveJsonResponse:data];
-    [ATLUtil debug:@"json response: %@", httpResponseData.jsonResponse];
+
+    NSDictionary * headerFields = urlResponse.allHeaderFields;
+    [ATLUtil debug:@"header fields: %@", headerFields];
+
+    httpResponseData.jsonFoundation = [ATLUtilNetworking saveJsonResponse:data];
+    [ATLUtil debug:@"json response: %@", httpResponseData.jsonFoundation];
     
     return httpResponseData;
 }
 
-+ (NSDictionary *)saveJsonResponse:(NSData *)jsonData {
++ (id)saveJsonResponse:(NSData *)jsonData {
     NSError *error = nil;
     NSException *exception = nil;
-    NSDictionary *jsonDict = [ATLUtilNetworking buildJsonDict:jsonData exceptionPtr:&exception errorPtr:&error];
+    id jsonFoundation = [ATLUtilNetworking buildJsonFoundation:jsonData exceptionPtr:&exception errorPtr:&error];
     
     if (exception != nil) {
         [ATLUtil debug:@"Failed to parse json response. (%@)", exception.description];
@@ -164,26 +167,26 @@ static NSURLSessionConfiguration *urlSessionConfiguration = nil;
         return nil;
     }
     
-    return jsonDict;
+    return jsonFoundation;
 }
 
-+ (NSDictionary *)buildJsonDict:(NSData *)jsonData
-                   exceptionPtr:(NSException **)exceptionPtr
-                       errorPtr:(NSError **)error {
++ (id)buildJsonFoundation:(NSData *)jsonData
+               exceptionPtr:(NSException **)exceptionPtr
+                   errorPtr:(NSError **)error {
     if (jsonData == nil) {
         return nil;
     }
     
-    NSDictionary *jsonDict = nil;
+    id jsonFoundation = nil;
     
     @try {
-        jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:error];
+        jsonFoundation = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:error];
     } @catch (NSException *ex) {
         *exceptionPtr = ex;
         return nil;
     }
     
-    return jsonDict;
+    return jsonFoundation;
 }
 
 @end
