@@ -13,6 +13,12 @@
 static const double kRequestTimeout = 60;   // 60 seconds
 static NSURLSessionConfiguration *urlSessionConfiguration = nil;
 
+@implementation ATLHttpResponse
+@end
+
+@implementation ATLHttpRequest
+@end
+
 @implementation ATLUtilNetworking
 
 + (void)initialize {
@@ -36,8 +42,6 @@ static NSURLSessionConfiguration *urlSessionConfiguration = nil;
     [ATLUtilNetworking sendRequest:request
      responseHandler:responseHandler];
 }
-
-
 
 + (NSMutableURLRequest *)requestForPackage:(ATLHttpRequest *)requestData
 {

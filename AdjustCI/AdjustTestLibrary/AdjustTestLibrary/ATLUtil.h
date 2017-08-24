@@ -16,6 +16,9 @@ typedef void (^selfInjectedBlock)(id);
 + (void)launchInQueue:(dispatch_queue_t)queue
            selfInject:(id)selfInject
                 block:(selfInjectedBlock)block;
++ (void)addOperationAfterLast:(NSOperationQueue *)operationQueue
+                        block:(dispatch_block_t)block;
+
 + (BOOL)isNull:(id)value;
 + (NSString *)adjTrim:(NSString *)value;
 

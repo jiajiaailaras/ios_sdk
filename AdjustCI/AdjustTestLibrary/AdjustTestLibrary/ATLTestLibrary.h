@@ -26,6 +26,8 @@
 - (id)initWithBaseUrl:(NSString *)baseUrl
    andCommandDelegate:(NSObject<AdjustCommandDelegate> *)commandDelegate;
 
-- (void)initTestSession:(NSString *)clientSdk;
+- (void)startTestSession:(NSString *)clientSdk;
 
++ (ATLTestLibrary *)testLibraryWithBaseUrl:(NSString *)baseUrl
+andCommandDelegate:(NSObject<AdjustCommandDelegate> *)commandDelegate;
 @end

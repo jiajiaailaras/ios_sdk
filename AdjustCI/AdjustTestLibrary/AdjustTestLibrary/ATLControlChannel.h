@@ -13,6 +13,6 @@
 
 - (id)initWithTestLibrary:(ATLTestLibrary *)testLibrary;
 
-- (id)teardown;
+- (void)teardown;
 
 @end
