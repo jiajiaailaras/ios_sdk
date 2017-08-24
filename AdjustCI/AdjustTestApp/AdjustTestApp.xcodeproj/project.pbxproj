@@ -46,6 +46,12 @@
 		6F068C191F4DAC5A00B60A4C /* ADJUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068BF51F4DAB8E00B60A4C /* ADJUserDefaults.m */; };
 		6F068C1A1F4DAC5A00B60A4C /* Adjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068BF71F4DAB8E00B60A4C /* Adjust.m */; };
 		6F068C1B1F4DAC5A00B60A4C /* ADJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068BF91F4DAB8E00B60A4C /* ADJUtil.m */; };
+		6F068C341F4DC27600B60A4C /* ATLControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068C2B1F4DC25600B60A4C /* ATLControlChannel.m */; };
+		6F068C351F4DC27600B60A4C /* ATLTestLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068C2D1F4DC25600B60A4C /* ATLTestLibrary.m */; };
+		6F068C361F4DC27600B60A4C /* ATLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068C2F1F4DC25600B60A4C /* ATLUtil.m */; };
+		6F068C371F4DC27600B60A4C /* ATLUtilNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068C311F4DC25600B60A4C /* ATLUtilNetworking.m */; };
+		6F068C381F4DC27600B60A4C /* MKBlockingQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068C331F4DC25600B60A4C /* MKBlockingQueue.m */; };
+		6F068C3B1F4DC57100B60A4C /* ATAAdjustCommandExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F068C3A1F4DC57100B60A4C /* ATAAdjustCommandExecutor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +132,19 @@
 		6F068BF81F4DAB8E00B60A4C /* ADJUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADJUtil.h; sourceTree = "<group>"; };
 		6F068BF91F4DAB8E00B60A4C /* ADJUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADJUtil.m; sourceTree = "<group>"; };
 		6F068BFA1F4DAB8E00B60A4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F068C291F4DC25600B60A4C /* ATLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLConstants.h; sourceTree = "<group>"; };
+		6F068C2A1F4DC25600B60A4C /* ATLControlChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLControlChannel.h; sourceTree = "<group>"; };
+		6F068C2B1F4DC25600B60A4C /* ATLControlChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLControlChannel.m; sourceTree = "<group>"; };
+		6F068C2C1F4DC25600B60A4C /* ATLTestLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLTestLibrary.h; sourceTree = "<group>"; };
+		6F068C2D1F4DC25600B60A4C /* ATLTestLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLTestLibrary.m; sourceTree = "<group>"; };
+		6F068C2E1F4DC25600B60A4C /* ATLUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLUtil.h; sourceTree = "<group>"; };
+		6F068C2F1F4DC25600B60A4C /* ATLUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLUtil.m; sourceTree = "<group>"; };
+		6F068C301F4DC25600B60A4C /* ATLUtilNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATLUtilNetworking.h; sourceTree = "<group>"; };
+		6F068C311F4DC25600B60A4C /* ATLUtilNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATLUtilNetworking.m; sourceTree = "<group>"; };
+		6F068C321F4DC25600B60A4C /* MKBlockingQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKBlockingQueue.h; sourceTree = "<group>"; };
+		6F068C331F4DC25600B60A4C /* MKBlockingQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKBlockingQueue.m; sourceTree = "<group>"; };
+		6F068C391F4DC57100B60A4C /* ATAAdjustCommandExecutor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATAAdjustCommandExecutor.h; sourceTree = "<group>"; };
+		6F068C3A1F4DC57100B60A4C /* ATAAdjustCommandExecutor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATAAdjustCommandExecutor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +186,10 @@
 				6F068B9D1F4DAB4F00B60A4C /* LaunchScreen.storyboard */,
 				6F068BA01F4DAB4F00B60A4C /* Info.plist */,
 				6F068BA11F4DAB4F00B60A4C /* main.m */,
+				6F068C281F4DC25600B60A4C /* AdjustTestLibrary */,
 				6F068BB61F4DAB8E00B60A4C /* Adjust */,
+				6F068C391F4DC57100B60A4C /* ATAAdjustCommandExecutor.h */,
+				6F068C3A1F4DC57100B60A4C /* ATAAdjustCommandExecutor.m */,
 			);
 			path = AdjustTestApp;
 			sourceTree = "<group>";
@@ -255,6 +277,25 @@
 			path = ADJAdditions;
 			sourceTree = "<group>";
 		};
+		6F068C281F4DC25600B60A4C /* AdjustTestLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				6F068C291F4DC25600B60A4C /* ATLConstants.h */,
+				6F068C2A1F4DC25600B60A4C /* ATLControlChannel.h */,
+				6F068C2B1F4DC25600B60A4C /* ATLControlChannel.m */,
+				6F068C2C1F4DC25600B60A4C /* ATLTestLibrary.h */,
+				6F068C2D1F4DC25600B60A4C /* ATLTestLibrary.m */,
+				6F068C2E1F4DC25600B60A4C /* ATLUtil.h */,
+				6F068C2F1F4DC25600B60A4C /* ATLUtil.m */,
+				6F068C301F4DC25600B60A4C /* ATLUtilNetworking.h */,
+				6F068C311F4DC25600B60A4C /* ATLUtilNetworking.m */,
+				6F068C321F4DC25600B60A4C /* MKBlockingQueue.h */,
+				6F068C331F4DC25600B60A4C /* MKBlockingQueue.m */,
+			);
+			name = AdjustTestLibrary;
+			path = ../../AdjustTestLibrary/AdjustTestLibrary;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -325,6 +366,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F068C3B1F4DC57100B60A4C /* ATAAdjustCommandExecutor.m in Sources */,
+				6F068C341F4DC27600B60A4C /* ATLControlChannel.m in Sources */,
+				6F068C351F4DC27600B60A4C /* ATLTestLibrary.m in Sources */,
+				6F068C361F4DC27600B60A4C /* ATLUtil.m in Sources */,
+				6F068C371F4DC27600B60A4C /* ATLUtilNetworking.m in Sources */,
+				6F068C381F4DC27600B60A4C /* MKBlockingQueue.m in Sources */,
 				6F068BFB1F4DAC5A00B60A4C /* ADJActivityHandler.m in Sources */,
 				6F068BFC1F4DAC5A00B60A4C /* ADJActivityKind.m in Sources */,
 				6F068BFD1F4DAC5A00B60A4C /* ADJActivityPackage.m in Sources */,
@@ -496,6 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QGUGW9AUMK;
 				INFOPLIST_FILE = AdjustTestApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adjust.AdjustTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,6 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QGUGW9AUMK;
 				INFOPLIST_FILE = AdjustTestApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adjust.AdjustTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
