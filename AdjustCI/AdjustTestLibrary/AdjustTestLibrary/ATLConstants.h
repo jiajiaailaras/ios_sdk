@@ -15,6 +15,7 @@ static NSString * const TEST_SESSION_END_HEADER = @"TestSessionEnd";
 static NSString * const TEST_CANCELTEST_HEADER = @"CancelTest";
 static NSString * const TEST_ENDWAIT_HEADER = @"EndWait";
 static NSString * const TEST_LIBRARY_CLASSNAME = @"TestLibrary";
+static NSString * const ADJUST_CLASSNAME = @"Adjust";
 static NSString * const WAIT_FOR_CONTROL = @"control";
 static NSString * const WAIT_FOR_SLEEP = @"sleep";
 

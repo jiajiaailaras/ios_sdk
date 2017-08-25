@@ -165,7 +165,57 @@ static NSURL * _baseUrl = nil;
 }
 
 - (void)execTestCommandsI:(id)jsonFoundation {
-    [ATLUtil debug:@"execTestCommands, jsonFoundation: %@", jsonFoundation];
+    NSArray * jsonArray = (NSArray *)jsonFoundation;
+    if (jsonArray == nil) {
+        [ATLUtil debug:@"jsonArray is nil"];
+        return;
+    }
+
+    for (NSDictionary * testCommand in jsonArray) {
+        NSString * className = [testCommand objectForKey:@"className"];
+        NSString * functionName = [testCommand objectForKey:@"functionName"];
+        NSDictionary * params = [testCommand objectForKey:@"params"];
+        [ATLUtil debug:@"className: %@, functionName: %@, params: %@", className, functionName, params];
+
+        NSDate *timeBefore = [NSDate date];
+        [ATLUtil debug:@"time before %@", [ATLUtil formatDate:timeBefore]];
+
+        // check for test library commands
+        if ([className isEqualToString:TEST_LIBRARY_CLASSNAME]) {
+            [self execTestLibraryCommand:functionName params:params];
+
+            NSDate *timeAfter = [NSDate date];
+            [ATLUtil debug:@"time after %@", [ATLUtil formatDate:timeAfter]];
+            NSTimeInterval timeElapsedSeconds = [timeAfter timeIntervalSinceDate:timeBefore];
+            [ATLUtil debug:@"seconds elapsed %f", timeElapsedSeconds];
+
+            continue;
+        }
+
+        if (![className isEqualToString:ADJUST_CLASSNAME]) {
+            [ATLUtil debug:@"className %@ is not valid", className];
+            continue;
+        }
+
+        if ([self.commandDelegate respondsToSelector:@selector(executeCommand:methodName:parameters:)]) {
+            [self.commandDelegate executeCommand:className methodName:functionName parameters:params];
+        } else if ([self.commandDelegate respondsToSelector:@selector(executeCommand:methodName:jsonParameters:)]) {
+
+            NSString *paramsJsonString = [ATLUtil parseDictionaryToJsonString:params];
+
+            [self.commandDelegate executeCommand:className methodName:functionName jsonParameters:paramsJsonString];
+        }
+
+        NSDate *timeAfter = [NSDate date];
+        [ATLUtil debug:@"time after %@", [ATLUtil formatDate:timeAfter]];
+        NSTimeInterval timeElapsedSeconds = [timeAfter timeIntervalSinceDate:timeBefore];
+        [ATLUtil debug:@"seconds elapsed %f", timeElapsedSeconds];
+    }
 }
+
+- (void)execTestLibraryCommand:(NSString *)functionName
+                        params:(NSDictionary *)params {
+}
+
 
 @end

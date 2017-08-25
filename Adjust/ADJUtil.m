@@ -111,7 +111,6 @@ static NSString * const kDateFormat                 = @"yyyy-MM-dd'T'HH:mm:ss.SS
 
     dateFormat.locale = [NSLocale systemLocale];
     [dateFormat setDateFormat:kDateFormat];
-
 }
 
 + (void)initializeUniversalLinkRegex {

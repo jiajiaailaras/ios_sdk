@@ -21,5 +21,7 @@ typedef void (^selfInjectedBlock)(id);
 
 + (BOOL)isNull:(id)value;
 + (NSString *)adjTrim:(NSString *)value;
++ (NSString *)formatDate:(NSDate *)value;
++ (NSString *)parseDictionaryToJsonString:(NSDictionary *) dictionary;
 
 @end

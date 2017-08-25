@@ -150,6 +150,9 @@ static NSURLSessionConfiguration *urlSessionConfiguration = nil;
 
     httpResponseData.jsonFoundation = [ATLUtilNetworking saveJsonResponse:data];
     [ATLUtil debug:@"json response: %@", httpResponseData.jsonFoundation];
+
+    [ATLUtil debug:@"json response class: %@", NSStringFromClass([httpResponseData.jsonFoundation class])];
+    //2const char * cStringClassName = object_getClassName(httpResponseData.jsonFoundation);
     
     return httpResponseData;
 }

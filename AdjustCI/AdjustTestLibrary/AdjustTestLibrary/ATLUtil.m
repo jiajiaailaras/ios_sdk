@@ -9,8 +9,38 @@
 #import "ATLUtil.h"
 
 static NSString * const kLogTag = @"AdjustTestLibrary";
+static NSDateFormatter *dateFormat;
+
+static NSString * const kDateFormat                 = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'Z";
 
 @implementation ATLUtil
+
++ (void)initialize {
+    dateFormat = [[NSDateFormatter alloc] init];
+
+    if ([NSCalendar instancesRespondToSelector:@selector(calendarWithIdentifier:)]) {
+        // http://stackoverflow.com/a/3339787
+        NSString *calendarIdentifier;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-pointer-compare"
+        if (&NSCalendarIdentifierGregorian != NULL) {
+#pragma clang diagnostic pop
+            calendarIdentifier = NSCalendarIdentifierGregorian;
+        } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            calendarIdentifier = NSGregorianCalendar;
+#pragma clang diagnostic pop
+        }
+
+        dateFormat.calendar = [NSCalendar calendarWithIdentifier:calendarIdentifier];
+    }
+
+    dateFormat.locale = [NSLocale systemLocale];
+    [dateFormat setDateFormat:kDateFormat];
+}
 
 + (void)debug:(NSString *)format, ...{
     va_list parameters; va_start(parameters, format);
@@ -76,4 +106,22 @@ static NSString * const kLogTag = @"AdjustTestLibrary";
     return [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
++ (NSString *)formatDate:(NSDate *)value {
+    if (dateFormat == nil) {
+        return nil;
+    }
+    return [dateFormat stringFromDate:value];
+}
+
++ (NSString *)parseDictionaryToJsonString:(NSDictionary *) dictionary {
+    NSError *error;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                         options:0
+                                                           error:&error];
+    if (error != nil || data == nil) {
+        [ATLUtil debug:@"error parsing dictionary to json: %@", error.description];
+        return nil;
+    }
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
 @end
